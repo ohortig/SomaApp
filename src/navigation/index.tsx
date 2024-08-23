@@ -16,9 +16,9 @@ const Stack = createStackNavigator<RootStackParamList>();
 const index = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Test">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Test" component={TestScreen} />
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Test" component={TestScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
