@@ -66,7 +66,7 @@ const DashboardScreen = () => {
                     <QuickFacts dashboardData={dashboardData}/>
                     <GoalWidget dashboardData={dashboardData}/>
                     <WeeklyMissionsWidget dashboardData={dashboardData}/>
-                    <Text style={styles.bodyTitleText}>Monthly Leaderboard</Text>
+                    <Text style={[styles.bodyTitleText, { marginBottom: 20 }]}>Monthly Leaderboard</Text>
                     <FlatList
                          data={dashboardData.leaderboard}
                          keyExtractor={(item) => item.id.toString()}
