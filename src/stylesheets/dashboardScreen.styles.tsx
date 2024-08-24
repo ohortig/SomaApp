@@ -37,6 +37,10 @@ interface Styles {
      goalWidgetContainer: ViewStyle;
      goalWidgetButton: ViewStyle;
      toolbarContainer: ViewStyle;
+     weeklyMissionsHeaderWidget: ViewStyle;
+     missionContainer: ViewStyle;
+     missionContainerLocked: ViewStyle;
+     missionStartNowButton: ViewStyle;
 };
 
 const styles = StyleSheet.create<Styles>({
@@ -171,6 +175,33 @@ const styles = StyleSheet.create<Styles>({
           paddingTop: 15,
           paddingBottom: 20,
           paddingHorizontal: 10,
+     },
+     weeklyMissionsHeaderWidget: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: 20,
+     },
+     missionContainer: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: screenHeight * 0.18,
+          width: (screenWidth - 50) / 2,
+          backgroundColor: '#EEECFB',
+          borderRadius: 16,
+     },
+     missionContainerLocked: {
+          height: screenHeight * 0.18,
+          width: (screenWidth - 50) / 2,
+          backgroundColor: '#F6F6F6',
+          borderRadius: 16,
+     },
+     missionStartNowButton: {
+          backgroundColor: '#8F73FF',
+          borderRadius: 8,
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingVertical: 8,
+          width: (screenWidth - 70) / 2
      }
 });
 
