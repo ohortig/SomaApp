@@ -22,12 +22,18 @@ interface Styles {
      bodyText: TextStyle;
      linkText: TextStyle;
      quickFactText: TextStyle;
+     goalText: TextStyle;
+     goalRestaurantText: TextStyle;
+     goalRewardText: TextStyle;
 
      mainContainer: ViewStyle;
      loggedInHeaderContainer: ViewStyle;
      headerLogoContainer: ViewStyle;
      quickFactsContainer: ViewStyle;
      quickFactBubble: ViewStyle;
+     quickFactValueContainer: ViewStyle;
+     goalWidgetContainer: ViewStyle;
+     goalWidgetButton: ViewStyle;
 };
 
 const styles = StyleSheet.create<Styles>({
@@ -60,6 +66,19 @@ const styles = StyleSheet.create<Styles>({
           color: metal,
           fontSize: 12,
      },
+     goalRestaurantText: {
+          color: '#535D6A',
+          fontSize: 12,
+     },
+     goalText: {
+          color: metal,
+          fontSize: 14,
+          marginVertical: 2,
+     },
+     goalRewardText: {
+          color: '#8292A7',
+          fontSize: 12,
+     },
 
      mainContainer: {
           flex: 1,
@@ -81,6 +100,8 @@ const styles = StyleSheet.create<Styles>({
           transform: [{translateX: -66}],
      },
      quickFactsContainer: {
+          marginTop: 20,
+          marginBottom: 15,
           flexDirection: 'row',
           width: screenWidth - 40,
           justifyContent: 'space-evenly',
@@ -93,6 +114,34 @@ const styles = StyleSheet.create<Styles>({
           alignItems: 'center',
           paddingVertical: 8,
           paddingHorizontal: 4,
+     },
+     quickFactValueContainer: {
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: white,
+          borderRadius: 16,
+          width: screenWidth * 0.26,
+          height: screenHeight * 0.04,
+          paddingVertical: 8,
+          paddingHorizontal: 4,
+          marginVertical: 4,
+     },
+     goalWidgetContainer: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+          borderColor: '#EEEBEB',
+          borderWidth: 0.70,
+          borderRadius: 16,
+          height: screenHeight * 0.09,
+          marginBottom: 20,
+     },
+     goalWidgetButton: {
+          borderColor: '#EEEBEB',
+          borderWidth: 0.70,
+          borderRadius: 16,
+          padding: 12,
      },
 });
 

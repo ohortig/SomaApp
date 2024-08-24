@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Image, Text, ActivityIndicator, FlatList } from 'react-native';
 import { getToken } from '../storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from '../stylesheets/dashboardScreen.styles';
 import LoggedInHeader from '../components/LoggedInHeader';
+import QuickFacts from '../components/QuickFacts';
+import GoalWidget from '../components/GoalWidget';
+import DaysLeft from '../components/DaysLeft';
 
 const DashboardScreen = () => {
      const [dashboardData, setDashboardData] = useState<any>(null);
@@ -42,7 +45,7 @@ const DashboardScreen = () => {
      if (loading) {
           return (
                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <ActivityIndicator size="large" color="#120845" />
+                    <ActivityIndicator size='small' color='#120845' />
                </View>
           );
      }
@@ -53,26 +56,17 @@ const DashboardScreen = () => {
                </View>
           );
      }
+
      return (
           <SafeAreaView style={styles.mainContainer}>
                <LoggedInHeader />
                <Text style={[styles.headerText, { marginTop: 20 }]}>Welcome back, {dashboardData.user.name}!</Text>
-               <View style={styles.quickFactsContainer}>
-                    <View style={styles.quickFactBubble}>
-                         <Text style={styles.quickFactText}>Loyalty Points</Text>
-                    </View>
-                    <View style={styles.quickFactBubble}>
-                         <Text style={styles.quickFactText}>Cycle</Text>
-                    </View>
-                    <View style={styles.quickFactBubble}>
-                         <Text style={styles.quickFactText}>Your Reward</Text>
-                    </View>
+               <QuickFacts dashboardData={dashboardData}/>
+               <GoalWidget dashboardData={dashboardData}/>
+               <View style={{ flexDirection: 'row', }}>
+                    <Text>Weekly Missions</Text>
+                    <DaysLeft dashboardData={dashboardData} />
                </View>
-               <Text>User ID: {dashboardData.userId}</Text>
-               <Text>User Name: {dashboardData.user.name}</Text>
-               <Text>Restaurant Name: {dashboardData.restaurant.name}</Text>
-               <Text>Points: {dashboardData.stats.points}</Text>
-
                <Text style={styles.headerText}>Leaderboard:</Text>
                <FlatList
                     data={dashboardData.leaderboard}
