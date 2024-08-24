@@ -2,7 +2,11 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 import styles from '../stylesheets/signInScreen.styles';
 
-function SignInButton() {
+type SignInButtonProps = {
+     onPress: () => void;
+   };
+
+const SignInButton: React.FC<SignInButtonProps> = ({ onPress }) => {
   return (
      <Pressable
          style={({ pressed }) => [
@@ -11,7 +15,7 @@ function SignInButton() {
                },
                styles.signInButton,
           ]}
-          onPress={() => alert('Pressable Button Pressed!')}
+          onPress={onPress}
      >
           <Text style={styles.signInText}>Sign In</Text>
      </Pressable>

@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import React from 'react';
+import { View, TextInput } from 'react-native';
 import styles from '../stylesheets/signInScreen.styles';
 
-const PasswordInput = () => {
-  const [text, setText] = useState('');
+type PasswordInputProps = {
+  value: string;
+  onChangeText: (text: string) => void;
+};
 
+const PasswordInput: React.FC<PasswordInputProps>  = ({ value, onChangeText }) => {
   return (
     <View style={styles.textInputContainer}>
           <TextInput
-               placeholder="Create a password"
-               value={text}
-               onChangeText={(value) => setText(value)}
-               autoCapitalize="none"
-               secureTextEntry={true}
+              placeholder="Create a password"
+              value={value}
+              onChangeText={onChangeText}
+              autoCapitalize="none"
+              secureTextEntry={true}
+              style={styles.bodyText}
           />
     </View>
   );

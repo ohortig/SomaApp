@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import React from 'react';
+import { View, TextInput } from 'react-native';
 import styles from '../stylesheets/signInScreen.styles';
 
-const EmailInput = () => {
-  const [text, setText] = useState('');
+type EmailInputProps = {
+  value: string;
+  onChangeText: (text: string) => void;
+};
 
+const EmailInput: React.FC<EmailInputProps> = ({ value, onChangeText }) => {
   return (
     <View style={styles.textInputContainer}>
           <TextInput
-               placeholder="Enter your email"
-               value={text}
-               onChangeText={(value) => setText(value)}
-               autoCapitalize="none"
+              placeholder="Enter your email"
+              value={value}
+              onChangeText={onChangeText}
+              autoCapitalize="none"
+              style={styles.bodyText}
           />
     </View>
   );
