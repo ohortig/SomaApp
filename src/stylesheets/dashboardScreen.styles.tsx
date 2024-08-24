@@ -8,7 +8,8 @@ const violet_half_opacity = '#12084580';
 const charcoal = '#344054';
 const blue = '#8F73FF';
 const white = '#FFFFFF';
-const gray = '#D0D5DD';
+const gray = '#F1F1F1';
+const metal = '#2E3339';
 
 const headerTextSize = 24;
 const subHeaderTextSize = 14;
@@ -20,6 +21,13 @@ interface Styles {
      subHeaderText: TextStyle;
      bodyText: TextStyle;
      linkText: TextStyle;
+     quickFactText: TextStyle;
+
+     mainContainer: ViewStyle;
+     loggedInHeaderContainer: ViewStyle;
+     headerLogoContainer: ViewStyle;
+     quickFactsContainer: ViewStyle;
+     quickFactBubble: ViewStyle;
 };
 
 const styles = StyleSheet.create<Styles>({
@@ -47,6 +55,44 @@ const styles = StyleSheet.create<Styles>({
           fontSize: linkTextSize,
           color: blue,
           textAlign: 'left',
+     },
+     quickFactText: {
+          color: metal,
+          fontSize: 12,
+     },
+
+     mainContainer: {
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          backgroundColor: white,
+          paddingHorizontal: 20,
+     },
+     loggedInHeaderContainer: {
+          flexDirection: 'row',
+          height: screenHeight * 0.06,
+          width: screenWidth,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+     },
+     headerLogoContainer: {
+          position: 'absolute',
+          left: '50%',
+          transform: [{translateX: -66}],
+     },
+     quickFactsContainer: {
+          flexDirection: 'row',
+          width: screenWidth - 40,
+          justifyContent: 'space-evenly',
+     },
+     quickFactBubble: {
+          backgroundColor: gray,
+          borderRadius: 16,
+          width: screenWidth * 0.28,
+          height: screenHeight * 0.08,
+          alignItems: 'center',
+          paddingVertical: 8,
+          paddingHorizontal: 4,
      },
 });
 
