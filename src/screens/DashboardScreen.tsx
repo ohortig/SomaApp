@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Image, Text, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 import { getToken } from '../storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -7,7 +7,8 @@ import styles from '../stylesheets/dashboardScreen.styles';
 import LoggedInHeader from '../components/LoggedInHeader';
 import QuickFacts from '../components/QuickFacts';
 import GoalWidget from '../components/GoalWidget';
-import DaysLeft from '../components/DaysLeft';
+import WeeklyMissionsWidget from '../components/WeeklyMissionsWidget';
+import Toolbar from '../components/Toolbar';
 
 const DashboardScreen = () => {
      const [dashboardData, setDashboardData] = useState<any>(null);
@@ -59,22 +60,22 @@ const DashboardScreen = () => {
 
      return (
           <SafeAreaView style={styles.mainContainer}>
-               <LoggedInHeader />
-               <Text style={[styles.headerText, { marginTop: 20 }]}>Welcome back, {dashboardData.user.name}!</Text>
-               <QuickFacts dashboardData={dashboardData}/>
-               <GoalWidget dashboardData={dashboardData}/>
-               <View style={{ flexDirection: 'row', }}>
-                    <Text>Weekly Missions</Text>
-                    <DaysLeft dashboardData={dashboardData} />
-               </View>
-               <Text style={styles.headerText}>Leaderboard:</Text>
-               <FlatList
-                    data={dashboardData.leaderboard}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                         <Text>{item.name}: {item.total} points {item.you ? '(You)' : ''}</Text>
-                    )}
-               />
+               <ScrollView>
+                    <LoggedInHeader />
+                    <Text style={[styles.headerText, { marginTop: 20 }]}>Welcome back, {dashboardData.user.name}!</Text>
+                    <QuickFacts dashboardData={dashboardData}/>
+                    <GoalWidget dashboardData={dashboardData}/>
+                    <WeeklyMissionsWidget dashboardData={dashboardData}/>
+                    <Text style={styles.bodyTitleText}>Monthly Leaderboard</Text>
+                    <FlatList
+                         data={dashboardData.leaderboard}
+                         keyExtractor={(item) => item.id.toString()}
+                         renderItem={({ item }) => (
+                              <Text>{item.name}: {item.total} points {item.you ? '(You)' : ''}</Text>
+                         )}
+                    />
+               </ScrollView>
+               <Toolbar dashboardData={dashboardData}/>
           </SafeAreaView>
      );
 };

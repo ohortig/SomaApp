@@ -16,12 +16,12 @@ const DaysLeft: React.FC<DaysLeftProps> = ({ dashboardData }) => {
   const timeDiff = targetDate.getTime() - today.getTime();
   const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // days left to complete quiz
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'center', alignContent: 'center' }}>
       <Image
         source={(require('../../assets/icons/clock_icon.png'))}
         style={{ width: 14, height: 14 }}
       />
-      <Text>{daysLeft} days left</Text>
+      <Text style={[styles.daysLeftText, { marginHorizontal: 3 }]}>{daysLeft} days left</Text>
     </View>
   );
 };

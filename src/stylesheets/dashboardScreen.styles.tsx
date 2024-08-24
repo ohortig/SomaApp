@@ -25,6 +25,8 @@ interface Styles {
      goalText: TextStyle;
      goalRestaurantText: TextStyle;
      goalRewardText: TextStyle;
+     daysLeftText: TextStyle;
+     bodyTitleText: TextStyle;
 
      mainContainer: ViewStyle;
      loggedInHeaderContainer: ViewStyle;
@@ -34,6 +36,7 @@ interface Styles {
      quickFactValueContainer: ViewStyle;
      goalWidgetContainer: ViewStyle;
      goalWidgetButton: ViewStyle;
+     toolbarContainer: ViewStyle;
 };
 
 const styles = StyleSheet.create<Styles>({
@@ -78,6 +81,14 @@ const styles = StyleSheet.create<Styles>({
      goalRewardText: {
           color: '#8292A7',
           fontSize: 12,
+     },
+     daysLeftText: {
+          color: '#797979',
+          fontSize: 14,
+     },
+     bodyTitleText: {
+          color: '#0D0D0D',
+          fontSize: 16,
      },
 
      mainContainer: {
@@ -143,6 +154,24 @@ const styles = StyleSheet.create<Styles>({
           borderRadius: 16,
           padding: 12,
      },
+     toolbarContainer: {
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 67,
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          borderTopWidth: 1,
+          borderTopColor: '#E0E0E0',
+          borderBottomWidth: 1,
+          borderBottomColor: '#E0E0E0',
+          paddingTop: 15,
+          paddingBottom: 20,
+          paddingHorizontal: 10,
+     }
 });
 
 export default styles;
