@@ -33,7 +33,7 @@ interface Styles {
   signUpGoogleButton: ViewStyle,
   bottomContainer: ViewStyle,
   textInputContainer: ViewStyle
-}
+};
 
 const styles = StyleSheet.create<Styles>({
   headerText: {

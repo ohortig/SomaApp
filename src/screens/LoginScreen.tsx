@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, Pressable, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LoggedOutHeader from '../components/LoggedOutHeader';
-import { storeToken, getToken } from '../storage';
+import { storeToken } from '../storage';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // component imports
 import styles from '../stylesheets/signInScreen.styles';
@@ -11,8 +12,13 @@ import SignInButton from '../components/SignInButton';
 import SignUpGoogleButton from '../components/SignUpGoogleButton';
 import EmailInput from '../components/EmailInput';
 import PasswordInput from '../components/PasswordInput';
+import { StackParamList } from '../navigation/types';
 
-const LoginScreen = () => {
+type navigationParam = {
+     navigation: NativeStackNavigationProp<StackParamList, 'Login'>;
+};
+
+const LoginScreen: React.FC<navigationParam> = ({ navigation }) => {
      const [email, setEmail] = useState('');
      const [password, setPassword] = useState('');
      const [error, setError] = useState('');
@@ -39,14 +45,20 @@ const LoginScreen = () => {
                     // Handle successful login
                     console.log('Login successful:', data, '\n');
                     await storeToken(data.token);
+                    console.log('Loading dashboard')
+                    navigation.navigate('Dashboard');
                } else {
                     const errorData = await response.json();
                     // Handle failure
                     setError(errorData.message || 'Login failed, please try again.');
                     console.log('Login unsuccessful\n');
+                    setEmail(''); // Clear email input
+                    setPassword(''); // Clear password input
                }
           } catch (error) {
                setError('An error occured during login.\n')
+               setEmail(''); // Clear email input
+               setPassword(''); // Clear password input
           }
      };
 

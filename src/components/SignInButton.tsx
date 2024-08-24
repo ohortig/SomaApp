@@ -4,7 +4,7 @@ import styles from '../stylesheets/signInScreen.styles';
 
 type SignInButtonProps = {
      onPress: () => void;
-   };
+};
 
 const SignInButton: React.FC<SignInButtonProps> = ({ onPress }) => {
   return (
